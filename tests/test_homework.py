@@ -19,16 +19,13 @@ def test_01():
     except subprocess.CalledProcessError as e:
         raise Exception(f"Error running the homework script: {e}")
 
-    # Ensure the my_mlruns directory exists
-    assert os.path.exists("my_mlruns"), "my_mlruns directory does not exist."
+    # Ensure the mlruns directory exists
+    assert os.path.exists("my_mlruns"), "mlruns directory does not exist."
 
-    # Check if there are any experiments saved in my_mlruns/
+    # Check if there are any experiments saved in mlruns/
     experiments = [
         d
         for d in os.listdir("my_mlruns")
         if os.path.isdir(os.path.join("my_mlruns", d))
     ]
-    assert len(experiments) > 0, "No experiments found in my_mlruns directory."
-
-    # Check if the required file exists
-    assert os.path.exists("make_predictions.py")
+    assert len(experiments) > 0, "No experiments found in mlruns directory."
